@@ -162,6 +162,7 @@ rune = "0.14"
 rune-modules = { version = "0.14", features = ["http", "json", "toml", "rand", "time", "test", "core", "io"] }
 
 # Scripting (JavaScript via QuickJS)
+# Note: FreeBSD builds use --no-default-features to disable this (no pre-built bindings available)
 rquickjs = { version = "0.11", features = ["full-async", "classes", "properties", "array-buffer", "parallel"], optional = true }
 
 # Scripting modules
@@ -184,7 +185,8 @@ jsonschema = "0.38"
 tempfile = "3"
 
 # Self-update (Phase 25: Clean room - replace custom daemon update checker)
-self_update = "0.42"
+# Use rustls to avoid OpenSSL dependency for cross-compilation
+self_update = { version = "0.42", default-features = false, features = ["rustls", "archive-tar", "archive-zip", "compression-flate2", "compression-zip-deflate"] }
 
 # Binary detection (Phase 26: Clean room - replace null-byte heuristic)
 content_inspector = "0.2"
