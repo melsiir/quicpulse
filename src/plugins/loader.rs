@@ -223,10 +223,10 @@ pub async fn execute_script_hook(
 async fn execute_rune_script(
     path: &Path,
     hook: PluginHook,
-    context: &HookContext,
+    _context: &HookContext,
 ) -> Result<HookResult, QuicpulseError> {
     // Read the script
-    let script = std::fs::read_to_string(path)
+    let _script = std::fs::read_to_string(path)
         .map_err(QuicpulseError::Io)?;
 
     // For now, return a default result

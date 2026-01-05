@@ -8,8 +8,8 @@ use regex::Regex;
 use std::cell::RefCell;
 use std::collections::HashMap;
 
-/// Thread-local cache for compiled regexes to avoid recompilation in loops
-/// Uses LRU-like eviction when cache is full
+// Thread-local cache for compiled regexes to avoid recompilation in loops.
+// Uses LRU-like eviction when cache is full.
 thread_local! {
     static REGEX_CACHE: RefCell<RegexCache> = RefCell::new(RegexCache::new(128));
 }

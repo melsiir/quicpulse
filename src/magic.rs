@@ -293,7 +293,7 @@ fn generate_random_string(len: usize) -> String {
 /// Generate a random hex string
 fn generate_random_hex(len: usize) -> String {
     let mut rng = rand::rng();
-    let bytes: Vec<u8> = (0..len / 2 + 1).map(|_| rng.random()).collect();
+    let bytes: Vec<u8> = (0..len / 2 + 1).map(|_| rng.random::<u8>()).collect();
     let hex: String = bytes.iter().map(|b| format!("{:02x}", b)).collect();
     hex[..len].to_string()
 }
@@ -302,7 +302,7 @@ fn generate_random_hex(len: usize) -> String {
 fn generate_random_bytes_base64(len: usize) -> String {
     use base64::{Engine as _, engine::general_purpose::STANDARD};
     let mut rng = rand::rng();
-    let bytes: Vec<u8> = (0..len).map(|_| rng.random()).collect();
+    let bytes: Vec<u8> = (0..len).map(|_| rng.random::<u8>()).collect();
     STANDARD.encode(&bytes)
 }
 
